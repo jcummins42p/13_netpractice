@@ -1,0 +1,52 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    CCNA_DAY_7.txt                                     :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jcummins <jcummins@student.42prague.com>   +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/08 11:52:04 by jcummins          #+#    #+#              #
+#    Updated: 2024/10/08 13:39:31 by jcummins         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+CCNA DAY 7: FAQ
+
+Find network and broadcast of:
+
+1)	20.120.47.225/13
+	225.248.0.0
+	8 block size in class A
+	network ID 20.120.0.0
+	broadcast ID 20.127.255.255
+
+2)	220.20.17.5/27
+	225.225.225.224
+	32 block size in class C
+	Network ID 220.20.17.0
+	Broadcast ID 220.20.17.31
+
+3)	10.10.7.17/19
+	225.225.224.0
+	32 block size in class B
+	Network ID 10.10.0.0
+	Broadcast ID 10.10.31.225
+
+4)	192.8.3.1/18 - you CAN have 192 with /18, you don't need to worry about classes
+	225.225.192.0
+	64 block size in class B
+	Network 	192.8.0.0
+	Broadcast	192.8.63.225
+
+5)	172.1.4.5/20
+	225.225.240.0
+	16 block size
+	Network		172.1.0.0
+	Broadcast	172.1.15.255
+
+6)	172.138.75.5/12
+	225.240.0.0
+	16 block size
+	Network		172.128.0.0
+	Broadcast	172.143.255.255
+

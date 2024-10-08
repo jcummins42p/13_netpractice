@@ -1,0 +1,44 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    CCNA_DAY_4.txt                                     :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jcummins <jcummins@student.42prague.com>   +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/08 11:30:27 by jcummins          #+#    #+#              #
+#    Updated: 2024/10/08 11:51:44 by jcummins         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+CCNA Video Day 4: Inter-Networking Devices
+
+1. Hub
+	Does look like a switch - has many ports
+	Non-intelligent
+	Does not have a MAC table: Takes input from one port and sends out on all ports
+	Has one collision domain
+	Has only one broadcast domain - when broadcast traffic is received from one port, it will broadcast on all ports.
+	Just copies broadcast traffic to all ports.
+
+2.	Switch
+	Intelligent devicee - ASIC application specific intelligent circuitry
+	Learns all MAC addresses connceted to it - CAM table
+	Can broadcast to one specific address - every port can have a conversation with every other port
+	Many collision Domans - as many as there are ports
+	By default will broadcast on all ports?
+	Only one broadcast domain
+
+3.	Router
+	Intelligent
+	Many Collision Domains - equal to number of ports
+	Many Broadcast Domains: if it receives broadcast traffic from one of its ports, it drops it. Does not forward to other ports.
+	When a client gets a destination address it compares with its own address. If the destination address is in a different network, it sends that packet to the GATEWAY addres. The router is the gateway in most cases.
+	So each interface of the router will be connected to a different network
+	Compared to a switch, where each interface of a switch should be connected to the same network.
+
+Data Transmission in a Network
+	Data transmission on ethernet happens using only MAC addresses - layer 2 vs IP which is layer 3.
+	ARP - address resolution protocol: sends the IP address with the ARP request to the switch. ARP is a broadcast traffic. So the switch takes the ARP request and sends it out on all the ports. ARP is like calling out your friends name in a crow. Everyone hears but only the friend responds. Everyone but the target computer ignores it and drops the packet. The target machine puts its MAC address in the reply so the switch knows to associate the MAC and IP addresses.
+	Switch knows which ports are associated with which MAC addresses.
+
+Data Trasmission Between Networks

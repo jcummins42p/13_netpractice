@@ -1,0 +1,60 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    CCNA_DAY_5.txt                                     :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jcummins <jcummins@student.42prague.com>   +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/08 11:52:04 by jcummins          #+#    #+#              #
+#    Updated: 2024/10/08 12:13:07 by jcummins         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+CCNA DAY 5 - Connecting Cisco Devices & IOS modes
+
+How to recognise a router? seeing a power switch. Switches do NOT have a power switch and switches have a lot of ports - 12 or 24
+A router typically has a couple of ports, might also have a switching module.
+
+As a CCNA you would need to know specific routers and switches.
+
+All sico devices have a console and aux port - both for 'out of band' configuration, meaning you access the device even when the operating system is not running. This allows you to continue to connect to a computer even when it is off, so you can fix remotely even if it's in an error state. 'Out of band' allows you to remotely see the boot process, bios etc. You can also see the router boot.
+
+Console port vs Aux
+	console connector
+
+New Cisco devices come with a console USB port instead of needing an ethernet, seria, usb connector.
+
+Every router also has ethernel ports to connect o other networking devices.
+
+POST - power on self test
+
+Command line interface - starts with the lowest access level 1
+
+User exec mode has the prompt
+	Router>
+
+You can enter ? to get info on commands
+
+To go into priviledge exec mode, type 'enable'
+
+Privelidge mode 15 has prompt
+	Router#
+
+And typing ? again will show many more commands.
+
+Type configure terminal to get the prompt
+	Router (config)#
+
+this is how you configure different modes - these are the different levels in Cisco IS
+
+User EXEC Command-Router>
+|
+|--	Priviledged EXEC Commands-Router#
+	|
+	|--	Global Comfiguration Commands-Router(config)#
+		|
+		|--	Interface Commands-Router(config-if)#
+		|
+		|--	Routing Engine Commands-Router(config-router)#
+		|
+		|--	Line Commands-Router(config-line)#
