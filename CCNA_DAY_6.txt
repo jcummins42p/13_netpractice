@@ -1,0 +1,72 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    CCNA_DAY_6.txt                                     :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jcummins <jcummins@student.42prague.com>   +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/08 11:52:04 by jcummins          #+#    #+#              #
+#    Updated: 2024/10/08 13:11:10 by jcummins         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+CCNA DAY 6: Filling the Gaps
+
+3 important topics - DHCP, TCP Transmission, Common Port Numbers
+
+DHCP - Dynamic Host configuration Protocol
+	a protocol that helps you configure IP addresses to hosts dynamically
+
+DHCP - has 6 messages, 4 of which are mandatory for assigning an IP address:
+	1. DHCP discovery - like a hello, which a device will shout into the network when it arrives, asking if there is a DHCP server around to provide an IP address. This shout is a broadcast, so all the devices in the network hear it.
+	2. DHCP offer - If there is a DHCP server, it sends a DHCP offer packet, to reply to the discovery. It reserves an IP address, then sends it along with its own IP address. If there are multiple DHCP servers in the network, they will all receive the request and reserve an IP address (ideally we wouldnt have 2 but sometimes it happens). In this case the client will receive both DHCP offers and it's up to the client to decide which one it wants to accept.
+	3. DHCP Request - the client sends a DHCP request back, saying it will take the IP offered by the particular server. This is sent back to the network and the server hears it. Any servers that offered an IP that wasn't taken will also hear it and unreserver their offered IP - put it back to the pool.
+	4. DHCP Ack - The DHCP servers hears the request, and sends the DHCP Ack to confirm.
+
+" more non critical messages:
+	5. DHCP Information - Issued by the client if it needs more info than provided by the DHCP offer, if the server had not given enough information.
+	6. DHCP Release - The message sent by the client to the server if it wants to release the IP address it holds. But most of the time the computer will shut down or disconnet first, so this is not a mandatory step.
+
+Normall when you configure a DCHP server, you will tell it what is the pool - the range of IP addresses e.g 192.168.1.1 to 192.168.1.254 so the DHCP server will only assign addresses in that range.
+
+--------------------------------------------------------------------------------
+
+TCP transmission is a connection-oriented transmission vs UDP which is connectionless transmission.
+
+TCP creates a connection before it starts doing the real transmission - a THREE WAY HANDSHAKE which is a ctually a technical term:
+
+Three-way-handshake:
+	1. A sends SYN packet to B
+	2. B combines a SYN and ACK packet in one and sends back to A
+	3. A needs to send ACK back
+
+TCP windowing - if you have tried transferring a big file, it will initially aY  huge time, then settle on like 4 minutes. initially when the transfer starts, it only sends a single SYN and receives and ACK, then it will try sending 10. Then maybe 100 packets. Then the number of packets per communication increases. It will reach a point where the receiving buffer is exceeded, at which point the sending device will stop increasing the number of packets. This is a flow control mechanism, where the two devices will reach a negotiated speed.
+
+	Every device on the network will have a different capacity so it cannot be negotiated ahead of time.
+
+--------------------------------------------------------------------------------
+
+Common Port Numbers
+
+There are standard port numbers - one server might have a file server, web server, email server and DHCP server. In every transmission, if you look at the frame it mentions the destination and source port number.
+
+Wikipedia lists the standard port numbers, obviously. There are many many, liek 65565 port numbers. The numbers from 12 to 1024 are know ad the 'Well-Known' port numbers.
+
+in TCP
+21.		FTP
+22.	 	SSH
+23. 	Telnet
+80.		HTTP
+443.	HTTPS
+
+Though these are NOT always the same in UDP
+
+Port numbers are what enables data to flow and come bakc to the right applications.
+
+
+
+
+
+
+
+
