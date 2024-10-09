@@ -1,0 +1,69 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   net_practice_notes.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcummins <jcummins@student.42prague.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/07 11:30:14 by jcummins          #+#    #+#             */
+/*   Updated: 2024/10/07 12:40:29 by jcummins         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+CCNA - Cisco Certified Network Associate
+From YouTube Channel: NetworKing
+Subnetting notes from Free CCNA | Day 2: TCP-IP
+
+OSI Reference model vs TCP/IP model
+
+Both are just sets of rules or standards.
+
+IBM vs digital equipment corp. Both made devices which were not compatible with each other, and had entirely separate peripheral ecosystems. They could not communicate or share information at all.
+> ISO - international standards organization - create OSI reference model (open system interconnect).
+> TCP/IP At the same time, TCP/IP was created and promoted by the US department of defense.
+
+Layer approach helps us identify where a problem is occuring, instead of needing to troubleshoot all equiment.
+
+The OSI model: need to know the layers by heart troubleshoot from 1 upwards:
+> Please do not throw sausage pizza away <
+1. Physical - Wires and cables, where the actual transport happens. Start troubleshoot here.
+2. Data link - Adds data link header to make a frame. Gives / Gets MAC address
+3. Network - Finds best path, creates packets
+4. Transport - reliable (TCP) or unreliable (UDP), creates port numbers
+
+5. Session - Creates and maintains session - maintains different sessions/connections
+6. Presentation - Generifies data - converts raw data to presentable form - TLS, SSL
+7. Application
+
+most CISCO devices will not look beyond layer 1 2 3 4. You need to know exactly how these work!
+
+TCP transmission control protocol
+UDP	user datagram protocol
+
+reliable communication needs an acknowledgement for every package sent, so unreliable is faster. Live feeds, for example, will use UDP. You can see this in corrupted pixel data in live streams.
+
+Transport layer creates a socket - an IP address plue port number. E.g 10.10.10.10
+Port numbers exist to route data to the correct application.
+When a network layer adds a header, it becomes a header.
+Data link layer can check for errors that happened during transmission
+
+From source to destination:
+	4. Transport
+		Takes data, segments it and adds its own header
+	3. Network
+		Adds network header, it becomes a packet
+	2. Data link
+		Adds data link header, data becomes a frame
+	1. Physical
+		Converts to binary
+At destination:
+	1. Physical
+		Converts binary to data with headers
+	2. Data link
+		Removes data link header and gives information to network layer
+	3. Network layer
+		Removes network header from packet and passes data to transport layer
+	4. Transport:
+		Removes transport header and passes up to application layers
+
+

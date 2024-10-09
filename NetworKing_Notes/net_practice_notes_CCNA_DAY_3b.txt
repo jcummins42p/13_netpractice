@@ -1,0 +1,87 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   net_practice_notes.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcummins <jcummins@student.42prague.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/07 11:30:14 by jcummins          #+#    #+#             */
+/*   Updated: 2024/10/07 12:40:29 by jcummins         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+CCNA - Cisco Certified Network Associate
+From YouTube Channel: NetworKing
+Notes from Free CCNA | Day 3 part 2: Subnetting class C IP
+
+Subnetting is easy and can be done mentally
+
+Subnetting is breaking down a large network, like putting walls up in a large room.
+
+Private IP are addresses in the ranges:
+Class A 10.0.0.0 to 10.255.255.255 		16,777,216 	addresses
+Class B 172.16.0.0 to 172.31.255.255	1,048,576	addresses
+Class C 192.168.0.0 to 192.168.255.255. 65,536		addresses
+
+Private IP addresses can only travel in the local network, not over the internet.
+Computers in the local LAN will all receive a private IP
+
+There are 4.2 billion IP addresses in IPv4, which is not enough for all devices on the internet.
+So each computer in the current internet does not have a unique internet facing IP address.
+
+CIDR - Classless Inter-Domain Routing /24+
+
+IP		192.168.100.225
+Subnet	255.255.255.0
+
+
+Example 1: To break the network into 2, borrow 1 bit from the host part of the subnet.
+	IP		192.168.100.225                              |<-new host position
+	Subnet	255.255.255.128 (11111111.11111111.11111111.10000000)
+
+	Network ID 1	192.168.100.0
+	Broadcast ID 1	192.168.100.127
+
+	Network ID 2	192.168.100.128
+	Broadcast ID 2	192.168.100.255
+
+Example 2: To break the network into 4, borrow 2 bits from the host part of the subnet.
+	IP		192.168.100.225                               |<-new host position
+	Subnet	255.255.255.192 (11111111.11111111.11111111.11000000)
+
+	Network ID 1	192.168.100.0
+	Broadcast ID 1	192.168.100.63
+
+	Network ID 2	192.168.100.64
+	Broadcast ID 2	192.168.100.127
+
+	Network ID 3	192.168.100.128
+	Broadcast ID 3	192.168.100.191
+
+	Network ID 4	192.168.100.192
+	Broadcast ID 4	192.168.100.255
+
+Borrowed Bits	|	1	|	2	|	3	|	4	|	5	|	6	|
+-----------------------------------------------------------------
+Mask Value		|	128	|	192	|	224	|	240	|	248	|	252	|
+Subnets			|	2	|	4	|	8	|	16	|	32	|	64	|
+Hosts			|	126	|	62	|	30	|	14	|	6	|	2	|
+CIDR			|	/25	|	/26	|	/27	|	/28	|	/29	|	/30	|
+Block Size		|	128	|	64	|	32	|	16	|	8	|	4	|
+
+VLSM - 	Variable length subnet mask. Allows unequal distribution of hosts in subnet.
+		Just use a different CIDR for different ranges of IP in the same network.
+
+VLSM Example: Design a network with 3 subnets, 60, 100 and 34.
+		split into 126, 62 and 62.
+BLOCKSIZ|		Type		|		IP				|
+----------------------------------------------------|
+126:	|	Network ID:		|	192.168.1.0/25		|
+		|	Broadcast ID:	|	192.168.1.127/25	|
+		|					|						|
+62:		|	Network ID:		|	192.168.1.128/26	|
+		|	Broadcast ID:	|	192.168.1.191/26	|
+		|					|						|
+62:		|	Network ID:		|	192.168.1.192/26	|
+		|	Broadcast ID:	|	192.168.1.255/26	|
+

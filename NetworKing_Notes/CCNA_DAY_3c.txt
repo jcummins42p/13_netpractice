@@ -1,0 +1,66 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   net_practice_notes.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcummins <jcummins@student.42prague.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/07 11:30:14 by jcummins          #+#    #+#             */
+/*   Updated: 2024/10/07 12:40:29 by jcummins         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+CCNA - Cisco Certified Network Associate
+From YouTube Channel: NetworKing
+Notes from Free CCNA | Day 3 part 2: Subnetting class C IP
+
+There are 8 valid subnet mask numbers:
+
+Borrowed Bits ->	1		2		3		4		5		6		7		8
+Mask Value			128		192		224		240		248		252		254		255
+Place Value			128		64		32		16		8		4		2		1
+
+No other subnet mask numbers are valid
+
+Requirements:
+	Find the network and broadcast id of 172.10.21.21/24
+	We know 172 is class B, which is /16 by default.
+	So we know the /24
+
+	Networkd ID:	172.10.21.0
+	Broadcast ID:	172.10.21.255
+
+	Find the network and broadcast id of 10.210.170.255/23
+	We know 10 is class A, which is /8 by default.
+	So we know the /23 means 15 borrowed bits.
+	We know /23 comes in the third octet and has place value 2
+
+	Networkd ID:	10.210.170.0
+	Broadcast ID:	10.210.171.255
+
+the CIPD / value is the position of the mask bit in the subnet
+
+Supernetting:
+	If subnetting is breaking down the network into smaller units, supernetting is the opposite.
+	So instead of having multiple entries on routing table you just have a single entry representing them all.
+	Summarization is what makes the internet run so efficiently.
+
+How do we summarize these 4 networks:
+	172.168.197.0/24
+	172.168.198.0/24
+	172.168.199.0/24
+	172.168.200.0/24
+	172.168.204.0/24
+	172.168.206.0/24
+
+First check where the change happens - the third octet, last 4 bits change
+	172.168.11000101.0/24
+	172.168.11000110.0/24
+	172.168.11000111.0/24
+	172.168.11001000.0/24
+	172.168.11001100.0/24
+	172.168.11001110.0/24
+
+Make everything beyond the line of change 0:
+	172.168.11000000.0/24	or 172.168.192.0/20 represents all 6 networks
+	

@@ -1,0 +1,84 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   net_practice_notes.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcummins <jcummins@student.42prague.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/07 11:30:14 by jcummins          #+#    #+#             */
+/*   Updated: 2024/10/07 12:40:29 by jcummins         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+CCNA - Cisco Certified Network Associate
+From YouTube Channel: NetworKing
+Subnetting notes from Free CCNA | Day 3: IPv4
+
+IPv4 looks like 192.10.10.2
+IPv6 looks like 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+
+IP is a conectionless protocol and operates at layer 3 connection layer.
+
+IPv4 is dotted decimal representation of four octets (0-255)
+
+which are represented in decimal, but obviously stored as binary like
+	11111111.11111111.11111111.00000000
+4 x 8 bit = IP addresses are 32 bit numbers.
+
+IP Address:
+Subnet Mask:
+Gateway:
+
+Every IP has a network and a host field. The subnet mask indicates which part is which:
+For each field in the subnet which is 255, the corresponding field in the IP is network.
+For each field in the subnet which is 0, the corresponding field in the IP is host.
+If an IP address is not part of the same network, iit will have different network fields.
+IP address and gateway NEED to be in the same network.
+
+IP CLASSES: Decided by the first octet:
+> 1-126		= class A
+> 127 		= LOOPBACK
+> 128-191	= class B
+> 192-223	= class C
+> 224-239	= class D	multicast
+> 240-255	= class E	experimental
+
+Commonly we use only classes A to C for this qualification.
+When the host is 0, it is the NETWORK ID
+When the host is 255, it is the BROADCAST ID
+
+So valid host ids range from 1 to 254
+
+The gateway must share a network address (the first octets marked 255 by the subnet mask)
+
+CLASS C Example: Class C will always have subnet mask 255.255.255.0
+	IP			192.168.100.225
+	Subnet Mask 255.255.255.0
+	Gateway		192.168.100.1 (anything with same network)
+
+	Network ID	192.168.100.0
+	Broadcast	192.168.100.255
+
+	Valid ip	192.168.100.1 - 192.168.100.255
+
+
+CLASS B Example: Class B will always have a subnet mask 255.255.0.0
+	IP			172.123.100.225
+	Subnet Mask	255.255.0.0
+	Gateway		172.123.1.225 (anything with same network)
+
+	Network ID	172.123.0.0
+	Broadcast	172.123.255.255
+
+	Valid IP	172.123.0.1	to 172.123.255.254
+
+Class A Example: will always have subnet mask 255.0.0.0
+	IP			100.228.111.225
+	Subnet Mask	255.0.0.0
+	Gateway		100.101.123.1 (anything with same network)
+
+	NEtwork ID	100.0.0.0
+	Broadcast	100.255.255.255
+	Valid IP	100.0.0.1 to 100.255.255.254
+	Broadcast	100.255.255.255
+
