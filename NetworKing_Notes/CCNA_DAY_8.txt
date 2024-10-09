@@ -6,7 +6,7 @@
 #    By: jcummins <jcummins@student.42prague.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 11:52:04 by jcummins          #+#    #+#              #
-#    Updated: 2024/10/08 15:48:54 by jcummins         ###   ########.fr        #
+#    Updated: 2024/10/09 17:13:02 by jcummins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,3 +19,7 @@ A switch has manyu interfaces
 Another way of connecting to a swtich is through one of the orts over TELNET - though you will clearly lose acces as soon as the device turns off
 
 This is device level configuaration - for the rest of the series he will be using GNS3, an emulator which lets us emulate Cisco IOS. So instead of buying 4 devices, you can use GNS3 to emulate those devices. But the problem with GNS3 is that you cannot emulate a switch because they have ASIC (application specific integrated circuit) So for this video he is using Cisco packet tracer for which you need to be part of their network academy.
+
+You can now use Cisco Packet Tracer for free, apparently.
+
+
